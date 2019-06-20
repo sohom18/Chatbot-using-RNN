@@ -19,19 +19,6 @@ class PartitionedMultiRNNCell(rnn_cell.RNNCell):
     # horizontally through subsequent layers, while avoiding the quadratic resource scaling of fully
     # connected layers with respect to layer width.
 
-    #        output
-    #  //////// \\\\\\\\
-    # -------------------
-    # |     |     |     |
-    # -------------------
-    # ~  |     |     |  ~
-    # -------------------
-    # |     |     |     |
-    # -------------------
-    #  \\\\\\\\ ////////
-    #        input
-
-
     def __init__(self, cell_fn, partition_size=128, partitions=1, layers=2):
         """Create a RNN cell composed sequentially of a number of RNNCells.
         Args:
